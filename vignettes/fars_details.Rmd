@@ -1,0 +1,71 @@
+---
+title: "fars_details"
+author: "Vinh Hang"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{fars_details}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+## Intro
+
+The package includes 5 functions: 
+<ol>
+<li>fars_read to read in data from a given years</li>
+<li>make_filename </li>
+<li>fars_read_years to return a list of month and years of the fars data</li>
+<li>fars_summarize_years to summarize total accidents by months and years</li>
+<li>fars_map_state plots the fars data on a given state and year</li>
+</ol>
+
+## Dependencies
+
+While it may not be neccesary, the following package will ensure the above functions run smoothly: dplyr, tidyr, readr and maps
+
+```{r loading packages}
+library(dplyr)
+library(readr)
+library(tidyr)
+library(maps)
+source("fars_functions.R")
+```
+
+## How it works?
+
+Lets read in the fars for 2013 data. Of course you can also use make_filename to create the file name. All the exploratory work should starts here before proceeding to the next functions.
+
+```{r read data}
+file <- make_filename(2013)
+data <- fars_read(filename = file)
+dim(data)
+head(names(data))
+```
+
+
+## fars_read_year
+
+If Month and years of the accidents are the only things you want, then fars_read_year can be called. Moreover, the fars_summarize_years will take that result and output a summary of total accidents by months/year 
+
+```{r fars read year}
+data <- fars_read_years(c(2013, 2014))
+data <- fars_summarize_years(c(2013, 2014))
+data
+```
+
+## fars_map_state
+
+Lastly, the fars_map_state function will plot the total accidents by state and year. 
+
+```{r plot on map}
+fars_map_state(state.num = 31, year = 2013)
+```
