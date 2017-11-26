@@ -12,4 +12,4 @@ Suggests: knitr,
     rmarkdown,
     testthat
 VignetteBuilder: knitr
-Imports: dplyr, tidyr, readr, maps
+Imports: dplyr, tidyr, readr, maps, magrittr
