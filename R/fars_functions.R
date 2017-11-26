@@ -58,6 +58,7 @@ make_filename <- function(year) {
 #' \code{lapply} , \code{tryCatch}
 #'
 #' @importFrom dplyr mutate select
+#' @importFrom magrittr %>%
 #' @export
 fars_read_years <- function(years) {
         lapply(years, function(year) {
@@ -87,6 +88,7 @@ fars_read_years <- function(years) {
 #'
 #' @importFrom dplyr bind_rows group_by summarize
 #' @importFrom tidyr spread
+#' @importFrom magrittr %>%
 #' @export
 fars_summarize_years <- function(years) {
         dat_list <- fars_read_years(years)
@@ -111,6 +113,7 @@ fars_summarize_years <- function(years) {
 #' @importFrom dplyr filter
 #' @importFrom maps map
 #' @importFrom graphics points
+#' @importFrom magrittr %>%
 #' @export
 fars_map_state <- function(state.num, year) {
         filename <- make_filename(year)
