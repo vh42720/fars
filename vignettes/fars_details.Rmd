@@ -37,7 +37,7 @@ library(dplyr)
 library(readr)
 library(tidyr)
 library(maps)
-source("fars_functions.R")
+library(fars)
 ```
 
 ## How it works?
